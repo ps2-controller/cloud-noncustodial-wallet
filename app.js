@@ -1,8 +1,7 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import db from './db/db';
+const express = require('express');
+const bodyParser =require('body-parser');
 const axios = require('axios');
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 const EthCrypto = require('eth-crypto');
 
@@ -114,15 +113,6 @@ app.post('/api/v1/send_transaction', async (req, res) => {
     success: 'true',
     message: 'users created successfully',
     address
-  })
-});
-
-// get all users
-app.get('/api/v1/users', (req, res) => {
-  res.status(200).send({
-    success: 'true',
-    message: 'users retrieved successfully',
-    users: db
   })
 });
 
