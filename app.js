@@ -106,13 +106,15 @@ app.post('/api/v1/send_transaction', async (req, res) => {
         "params": [adjSignedTx],
         "id": 1
       });
-  console.log(receipt.data)
+  console.log("return value:" + returnValue)
   let returnValue = 'https://rinkeby.etherscan.io/tx/' + receipt.data.result
 
   res.status(200).send({
     success: 'true',
     message: 'transaction sent!',
-    returnValue
+    txHash: returnValue,
+    sender: address,
+    recipient: dest
   })
 });
 
