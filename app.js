@@ -13,7 +13,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const infura = 'https://rinkeby.infura.io/v3/4f08ce086ae2423194b457836aebdb1d'
-
 const appSalt = '12345123451234512345123451234512345123451234512345123451234512345123451234512345123451234512345123451234512345123451234512345123451234512345123451234512345123451234512345123451234512345123451234512345123451234512345123451234512345123451234512345123451234512345';
 
 
@@ -89,7 +88,7 @@ app.post('/api/v1/send_transaction', async (req, res) => {
     to: dest,
     value: amount,
     nonce: nonceInt,
-    gasPrice: 10000000000,
+    gasPrice: 15000000000,
     gasLimit: 4000000,
     chainId: 4
   }
@@ -108,11 +107,12 @@ app.post('/api/v1/send_transaction', async (req, res) => {
         "id": 1
       });
   console.log(receipt.data)
+  let returnValue = '0x' + receipt.data.result
 
   res.status(200).send({
     success: 'true',
-    message: 'users created successfully',
-    address
+    message: 'transaction sent!',
+    returnValue
   })
 });
 
