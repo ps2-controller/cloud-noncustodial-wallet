@@ -107,7 +107,7 @@ app.post('/api/v1/send_transaction', async (req, res) => {
         "id": 1
       });
   console.log(receipt.data)
-  let returnValue = 'https://rinkeby.etherscan.io/address/' + receipt.data.result
+  let returnValue = 'https://rinkeby.etherscan.io/tx/' + receipt.data.result
 
   res.status(200).send({
     success: 'true',
